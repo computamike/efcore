@@ -258,7 +258,7 @@ namespace Microsoft.EntityFrameworkCore.Tools
 
         private static List<string> ResolveProjects(string path)
         {
-            if (path == null)
+             if (path == null)
             {
                 path = Directory.GetCurrentDirectory();
             }
@@ -269,6 +269,7 @@ namespace Microsoft.EntityFrameworkCore.Tools
 
             var projectFiles = Directory.EnumerateFiles(path, "*.*proj", SearchOption.TopDirectoryOnly)
                 .Where(f => !string.Equals(Path.GetExtension(f), ".xproj", StringComparison.OrdinalIgnoreCase))
+                .Where(f => !string.Equals(Path.GetExtension(f), ".dcproj", StringComparison.OrdinalIgnoreCase))
                 .Take(2).ToList();
 
             return projectFiles;
